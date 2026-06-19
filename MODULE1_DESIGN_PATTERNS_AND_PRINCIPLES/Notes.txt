@@ -2,5 +2,7 @@ SOLID PRINCIPLES
 
 S - Single Responsibility Model - one class does one particular function
 O - Open/Closed Principle - closed for modification; opened for extension
-L - Liskov Substitution Principle - subclass replaces parent
+L - Liskov Substitution Principle - subclass replaces parent ; follows INHERITANCE
+I - Interface Segregation - small interface for different functionalities
+D - Dependency Inversion - 
 
