@@ -1,1 +1,3 @@
+Module 2 : Data Strucutres and Algorithm
 
+-> array - linear data structure; not much used in real world; instead used arraylist
