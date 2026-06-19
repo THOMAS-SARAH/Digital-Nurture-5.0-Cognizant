@@ -1,4 +1,4 @@
-SOLID PRINCIPLES
+#SOLID PRINCIPLES
 
 S - Single Responsibility Model - one class does one particular function
 O - Open/Closed Principle - closed for modification; opened for extension
@@ -6,3 +6,16 @@ L - Liskov Substitution Principle - subclass replaces parent ; follows INHERITAN
 I - Interface Segregation - small interface for different functionalities
 D - Dependency Inversion - high-level modules (business logic) should not depend on low-level modules (details like databases or APIs)
 
+#DESIGN PATTERN (structural, creational and behavioural)
+
+singleton - JVM
+creational -> instantiation
+behavioural -> object interaction
+structural -> object composition
+
+#Architectural Pattern
+MVC
+
+M -> model
+V -> view
+C -> controller
