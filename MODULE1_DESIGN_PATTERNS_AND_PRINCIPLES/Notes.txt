@@ -1,1 +1,6 @@
+SOLID PRINCIPLES
+
+S - Single Responsibility Model - one class does one particular function
+O - Open/Closed Principle - closed for modification; opened for extension
+L - Liskov Substitution Principle - subclass replaces parent
 
