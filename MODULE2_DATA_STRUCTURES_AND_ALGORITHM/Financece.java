@@ -20,7 +20,7 @@ class Product {
     }
 }
 
-public class EcommerceSearch {
+public class Financece {
 
     // Linear Search
     public static Product linearSearch(Product[] products, int id) {
