@@ -1,4 +1,4 @@
-class Computer {
+class ComputerMachine {
     private String cpu;
     private int ram;
     private int storage;
