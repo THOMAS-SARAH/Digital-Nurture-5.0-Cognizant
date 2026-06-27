@@ -1,5 +1,5 @@
 -- ==========================================
--- TABLE CREATION
+-- TABLE CREATION pl/sql code
 -- ==========================================
 
 CREATE TABLE Customers (
