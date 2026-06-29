@@ -42,3 +42,45 @@ Built-in CRUD operations
 Automatic query generation
 Pagination and sorting
 Transaction management using @Transactional
+
+
+#HIBERNATE EXAMPLE
+
+public Integer addEmployee(Employee employee) {
+
+    Session session = factory.openSession();
+    Transaction tx = null;
+    Integer employeeID = null;
+
+    try {
+
+        tx = session.beginTransaction();
+
+        employeeID = (Integer) session.save(employee);
+
+        tx.commit();
+
+    } catch (HibernateException e) {
+
+        if (tx != null)
+            tx.rollback();
+
+        e.printStackTrace();
+
+    } finally {
+
+        session.close();
+
+    }
+
+    return employeeID;
+}
+
+#Spring Data JPA Example
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+}
+
