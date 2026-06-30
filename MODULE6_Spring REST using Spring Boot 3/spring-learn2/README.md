@@ -1,6 +1,6 @@
 Spring Core Hands-on 4
 
-Project Name : spring-learn
+Project Name : spring-learn2
 
 This project demonstrates
 
