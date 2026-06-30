@@ -24,5 +24,29 @@ The application is created using Spring Initializr with the following configurat
 
 ---
 
-## Project Structure
+## Project Repo Structure
+
+spring-learn/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── cognizant/
+│   │   │           └── springlearn/
+│   │   │               └── SpringLearnApplication.java
+│   │   └── resources/
+│   │       └── application.properties
+│   │
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── cognizant/
+│                   └── springlearn/
+│                       └── SpringLearnApplicationTests.java
+│
+├── pom.xml
+├── mvnw
+├── mvnw.cmd
+└── README.md
 
