@@ -1,310 +1,70 @@
-# Experiment: Event Handling in React
+# Getting Started with Create React App
 
-## 1. React Events
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-React Events are actions or occurrences that happen in the browser and can be detected by React components. Events allow applications to respond to user interactions such as clicking a button, typing in a textbox, submitting a form, or moving the mouse.
+## Available Scripts
 
-Common React events include:
+In the project directory, you can run:
 
-* `onClick`
-* `onChange`
-* `onSubmit`
-* `onMouseOver`
-* `onKeyDown`
-* `onFocus`
-* `onBlur`
+### `npm start`
 
-### Example
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```jsx
-function App() {
-  return (
-    <button onClick={() => alert("Button Clicked!")}>
-      Click Me
-    </button>
-  );
-}
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
----
+### `npm test`
 
-# 2. Event Handlers
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-An **Event Handler** is a JavaScript function that executes whenever a specific event occurs.
+### `npm run build`
 
-### Ways to define event handlers
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Method 1: Named Function
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-```jsx
-function handleClick() {
-    alert("Button Clicked");
-}
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-<button onClick={handleClick}>Click</button>
-```
+### `npm run eject`
 
-### Method 2: Arrow Function
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-```jsx
-<button onClick={() => alert("Clicked")}>
-    Click
-</button>
-```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-### Method 3: Passing Arguments
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-```jsx
-function greet(name) {
-    alert("Welcome " + name);
-}
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-<button onClick={() => greet("Sarah")}>
-    Welcome
-</button>
-```
+## Learn More
 
----
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# 3. Synthetic Event
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-React provides a **SyntheticEvent**, which is a wrapper around the browser's native event.
+### Code Splitting
 
-It behaves similarly to the native DOM event but works consistently across all browsers.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Advantages
+### Analyzing the Bundle Size
 
-* Cross-browser compatibility
-* Improved performance
-* Same interface for all browsers
-* Prevents browser inconsistencies
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Example
+### Making a Progressive Web App
 
-```jsx
-function handleClick(event) {
-    console.log(event.type);
-}
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-<button onClick={handleClick}>
-    Click
-</button>
-```
+### Advanced Configuration
 
-Here,
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-* `event` is a SyntheticEvent.
-* `event.type` returns `"click"`.
+### Deployment
 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-# 4. React Event Naming Convention
+### `npm run build` fails to minify
 
-React follows **camelCase** naming for events instead of lowercase HTML events.
-
-| HTML        | React         |
-| ----------- | ------------- |
-| onclick     | onClick       |
-| onchange    | onChange      |
-| onsubmit    | onSubmit      |
-| ondblclick  | onDoubleClick |
-| onmouseover | onMouseOver   |
-| onkeydown   | onKeyDown     |
-| onfocus     | onFocus       |
-| onblur      | onBlur        |
-
-### HTML Example
-
-```html
-<button onclick="myFunction()">
-```
-
-### React Example
-
-```jsx
-<button onClick={myFunction}>
-```
-
----
-
-# 5. Using the `this` Keyword
-
-In **Class Components**, `this` refers to the current component instance.
-
-It is used to:
-
-* Access state
-* Call methods
-* Update state using `this.setState()`
-
-### Example
-
-```jsx
-class Counter extends React.Component {
-
-    constructor() {
-        super();
-        this.state = {
-            count: 0
-        };
-    }
-
-    increment = () => {
-        this.setState({
-            count: this.state.count + 1
-        });
-    }
-
-    render() {
-        return (
-            <button onClick={this.increment}>
-                Increment
-            </button>
-        );
-    }
-}
-```
-
-> In Functional Components, `this` is **not used**. Hooks such as `useState()` replace the need for `this`.
-
----
-
-# 6. Invoking Multiple Methods
-
-A single event can execute multiple functions.
-
-### Example
-
-```jsx
-function increment() {
-    console.log("Counter Increased");
-}
-
-function sayHello() {
-    console.log("Hello User");
-}
-
-<button
-onClick={()=>{
-    increment();
-    sayHello();
-}}>
-Increment
-</button>
-```
-
-Both functions execute when the button is clicked.
-
----
-
-# 7. Passing Arguments to Event Handlers
-
-Arguments can be passed using an arrow function.
-
-### Example
-
-```jsx
-function welcome(name) {
-    alert("Welcome " + name);
-}
-
-<button onClick={() => welcome("Sarah")}>
-Say Welcome
-</button>
-```
-
----
-
-# 8. Click Event
-
-The **Click Event** occurs when a user clicks a button, image, or any clickable element.
-
-### Syntax
-
-```jsx
-<button onClick={handleClick}>
-```
-
-### Example
-
-```jsx
-function handleClick() {
-    alert("Button Clicked");
-}
-
-<button onClick={handleClick}>
-Click Me
-</button>
-```
-
----
-
-# 9. Form Event Handling
-
-React handles forms through controlled components.
-
-### Important Form Events
-
-| Event    | Purpose                          |
-| -------- | -------------------------------- |
-| onChange | Triggered when input changes     |
-| onSubmit | Triggered when form is submitted |
-| onFocus  | Triggered when input gets focus  |
-| onBlur   | Triggered when input loses focus |
-
-### Example
-
-```jsx
-function handleSubmit(event) {
-    event.preventDefault();
-    alert("Form Submitted");
-}
-
-<form onSubmit={handleSubmit}>
-    <button type="submit">
-        Submit
-    </button>
-</form>
-```
-
----
-
-# 10. Counter Example
-
-A counter application demonstrates event handling using buttons.
-
-Operations:
-
-* Increment
-* Decrement
-* Display current value
-
-Each button invokes its corresponding event handler to update the state.
-
----
-
-# 11. Currency Converter
-
-A Currency Converter converts one currency into another based on a conversion rate.
-
-In this experiment:
-
-* User enters amount in Indian Rupees (INR).
-* Clicking the **Convert** button triggers the `handleSubmit()` function.
-* The amount is converted into Euros using a predefined conversion rate.
-* The converted value is displayed on the screen.
-
----
-
-# Key Points
-
-* React uses **camelCase** for event names.
-* Event handlers are JavaScript functions executed when events occur.
-* React provides **SyntheticEvent** for cross-browser compatibility.
-* Multiple methods can be called within a single event handler.
-* Arguments are passed using arrow functions.
-* `this` is mainly used in class components to access state and methods.
-* `onClick`, `onChange`, and `onSubmit` are the most commonly used React events.
-* Forms are handled using event handlers like `onSubmit()` and `onChange()`.
-* Event handling enables interactive applications such as counters, welcome messages, and currency converters.
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
