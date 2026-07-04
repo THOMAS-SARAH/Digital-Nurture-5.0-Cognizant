@@ -1,0 +1,296 @@
+# Theory – Git Merge Conflict Resolution
+
+## Objectives
+
+* Understand what a **merge conflict** is.
+* Learn why merge conflicts occur.
+* Understand how Git detects conflicts during merging.
+* Learn different methods to resolve merge conflicts.
+* Understand the use of **P4Merge** for visual conflict resolution.
+
+---
+
+# Introduction to Merge Conflicts
+
+A **merge conflict** occurs when Git is unable to automatically merge changes from two branches because the same portion of a file has been modified differently in both branches.
+
+Since Git cannot determine which version should be retained, it stops the merge process and requests manual intervention.
+
+---
+
+# What is a Merge Conflict?
+
+A merge conflict happens when:
+
+* Two developers edit the same file.
+* The same lines of code are modified differently.
+* One branch deletes a file while another branch modifies it.
+* Git cannot automatically combine the changes.
+
+The conflict must be resolved before the merge can be completed.
+
+---
+
+# Why Do Merge Conflicts Occur?
+
+Common causes include:
+
+* Multiple developers editing the same file.
+* Simultaneous modifications to the same lines.
+* Long-lived branches that have diverged significantly.
+* Renaming or deleting files in different branches.
+* Merging outdated branches into the latest code.
+
+---
+
+# Example Scenario
+
+Suppose the repository has two branches.
+
+### Master Branch
+
+```xml
+<message>Hello World</message>
+```
+
+### GitWork Branch
+
+```xml
+<message>Hello Git</message>
+```
+
+Both branches modify the same line differently.
+
+When merging **GitWork** into **master**, Git cannot determine which version is correct, resulting in a merge conflict.
+
+---
+
+# Git Merge Process
+
+When a merge is initiated, Git:
+
+1. Compares both branches.
+2. Attempts to merge changes automatically.
+3. Detects conflicts if the same content has been modified.
+4. Stops the merge process.
+5. Marks the conflicting sections.
+6. Waits for the developer to resolve the conflict.
+
+---
+
+# Conflict Markers
+
+When a conflict occurs, Git inserts conflict markers into the affected file.
+
+Example:
+
+```text
+<<<<<<< HEAD
+<message>Hello World</message>
+=======
+<message>Hello Git</message>
+>>>>>>> GitWork
+```
+
+Meaning:
+
+* `<<<<<<< HEAD` → Current branch (master).
+* `=======` → Separator between both versions.
+* `>>>>>>> GitWork` → Incoming changes from the GitWork branch.
+
+The developer must edit the file, remove the markers, and keep the desired content.
+
+---
+
+# Conflict Resolution Process
+
+The general workflow is:
+
+```text
+Modify Files
+      │
+      ▼
+Commit Changes
+      │
+      ▼
+Merge Branch
+      │
+      ▼
+Conflict Detected
+      │
+      ▼
+Resolve Conflict
+      │
+      ▼
+Stage Changes
+      │
+      ▼
+Commit Merge
+```
+
+---
+
+# Git Status During a Conflict
+
+The `git status` command displays files with merge conflicts.
+
+Syntax:
+
+```bash
+git status
+```
+
+It identifies files that require manual resolution before the merge can continue.
+
+---
+
+# Git Diff
+
+The `git diff` command displays the differences between branches or files.
+
+Syntax:
+
+```bash
+git diff master GitWork
+```
+
+It helps identify the exact changes that caused the conflict.
+
+---
+
+# P4Merge Tool
+
+**P4Merge** is a graphical comparison and merge tool provided by Perforce.
+
+It simplifies conflict resolution by displaying:
+
+* Current version.
+* Incoming version.
+* Base version.
+* Merged result.
+
+### Features
+
+* Side-by-side comparison.
+* Three-way merge support.
+* Conflict highlighting.
+* Easy manual selection of changes.
+
+---
+
+# Three-Way Merge
+
+A **three-way merge** compares:
+
+* Base version (common ancestor).
+* Current branch.
+* Incoming branch.
+
+```text
+          Base
+         /    \
+   Master    GitWork
+         \    /
+      Merged Result
+```
+
+Git uses the common ancestor to determine how changes should be combined.
+
+---
+
+# Merge Commit
+
+After conflicts are resolved, Git creates a **merge commit**.
+
+A merge commit records:
+
+* Both parent branches.
+* The resolved changes.
+* The complete merge history.
+
+---
+
+# Git Log
+
+Git stores every commit in the repository history.
+
+To display a graphical commit history:
+
+```bash
+git log --oneline --graph --decorate --all
+```
+
+### Benefits
+
+* Shows branch structure.
+* Displays merge commits.
+* Helps visualize repository history.
+* Indicates the current branch.
+
+---
+
+# Git Ignore After Conflict Resolution
+
+Temporary files or backup files may be created during conflict resolution.
+
+These files should not be committed.
+
+They can be ignored by adding them to the `.gitignore` file.
+
+Example:
+
+```text
+*.orig
+*.bak
+```
+
+This prevents backup files from being tracked by Git.
+
+---
+
+# Deleting the Branch
+
+Once the merge is successfully completed and the changes are integrated into the master branch, the feature branch is no longer required.
+
+It can be deleted using:
+
+```bash
+git branch -d GitWork
+```
+
+Deleting merged branches keeps the repository organized.
+
+---
+
+# Best Practices to Avoid Merge Conflicts
+
+* Pull the latest changes before starting work.
+* Commit changes frequently.
+* Keep feature branches short-lived.
+* Communicate with team members when working on shared files.
+* Merge branches regularly.
+* Use meaningful commit messages.
+* Review differences before merging.
+
+---
+
+# Advantages of Proper Conflict Resolution
+
+* Prevents accidental loss of code.
+* Ensures all intended changes are preserved.
+* Improves collaboration among developers.
+* Maintains repository consistency.
+* Produces a reliable and traceable commit history.
+
+---
+
+# Summary
+
+* A **merge conflict** occurs when Git cannot automatically combine changes from different branches.
+* Conflicts usually arise when the same file or line is modified differently in multiple branches.
+* Git marks conflicting sections and pauses the merge until the conflict is resolved.
+* The `git status` and `git diff` commands help identify and inspect conflicts.
+* **P4Merge** provides a graphical interface for resolving conflicts using a three-way merge.
+* After resolving conflicts, the changes are staged and committed as a merge commit.
+* Temporary backup files created during resolution should be added to `.gitignore`.
+* Once the merge is complete, the feature branch can be safely deleted to maintain a clean repository.
