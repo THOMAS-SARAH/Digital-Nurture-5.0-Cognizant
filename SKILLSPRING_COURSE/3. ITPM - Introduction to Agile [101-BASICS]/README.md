@@ -1,4 +1,4 @@
-Here's a **GitHub-ready `README.md`** version of the summary notes for **ITPM - Introduction to Agile [101-Basics]**.
+
 
 ---
 
