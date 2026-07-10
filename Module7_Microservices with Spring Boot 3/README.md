@@ -21,7 +21,7 @@ Both services are standalone Maven projects with their own `pom.xml` and run ind
 * Spring Web
 * Spring Boot DevTools
 * Maven
-* Eclipse IDE
+* VS Code
 
 ---
 
